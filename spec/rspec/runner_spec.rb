@@ -112,13 +112,13 @@ describe Crystalball::RSpec::Runner do
 
       it 'prints out warning' do
         expect(Crystalball).to receive(:log).with(:warn, 'Maps are outdated!')
-        described_class.run([], STDERR, STDOUT)
+        described_class.run([], $stderr, $stdout)
       end
     end
   end
 
   describe '#setup' do
-    subject { runner.setup(STDOUT, STDOUT) }
+    subject { runner.setup($stdout, $stdout) }
     let!(:runner) { described_class.new(options, configuration, world) }
     let(:options) { instance_double('RSpec::Core::ConfigurationOptions', options: {files_or_directories_to_run: files}).as_null_object }
     let(:world) { instance_double('RSpec::Core::World', filtered_examples: []).as_null_object }
@@ -153,7 +153,7 @@ describe Crystalball::RSpec::Runner do
       after { ENV.delete('CRYSTALBALL_EXAMPLES_LIMIT') }
 
       it 'reconfigures RSpec env with new set from ExamplesPruner' do
-        expect(::RSpec::Core::ConfigurationOptions).to receive(:new).with(['pruned_set']).and_return(double.as_null_object)
+        expect(RSpec::Core::ConfigurationOptions).to receive(:new).with(['pruned_set']).and_return(double.as_null_object)
         expect(world.filtered_examples).to receive(:clear)
         expect(world).to receive(:reset)
         world.instance_variable_set(:@example_group_counts_by_spec_file, [])

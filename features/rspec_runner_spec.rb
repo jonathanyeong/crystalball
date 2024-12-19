@@ -20,7 +20,7 @@ describe 'RSpec runner' do
 
   before do
     ENV['CRYSTALBALL_LOG_LEVEL'] = 'debug'
-    ENV['CRYSTALBALL_LOG_FILE'] = '/dev/null'
+    ENV['CRYSTALBALL_LOG_FILE'] = File::NULL
   end
 
   after do

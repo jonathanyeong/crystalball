@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'set'
-
 module Crystalball
   class MapGenerator
     class AllocatedObjectsStrategy
@@ -17,9 +15,9 @@ module Crystalball
 
         # @yield a block to execute
         # @return [Array<Object>] classes of objects allocated during the block execution
-        def used_classes_during(&block)
+        def used_classes_during(&)
           self.created_object_classes = Set.new
-          trace_point.enable(&block)
+          trace_point.enable(&)
           created_object_classes
         end
 

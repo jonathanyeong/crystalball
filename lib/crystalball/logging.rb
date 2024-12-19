@@ -6,9 +6,9 @@ module Crystalball
   # This module logs information to the standard output based on the configured log level,
   # and also logs unfiltered information to the configured log file.
   module Logging
-    def log(severity_sym, *args, &block)
-      output_stream.log(severity(severity_sym), *args, &block)
-      log_file_output_stream.log(severity(severity_sym), *args, &block)
+    def log(severity_sym, *, &)
+      output_stream.log(severity(severity_sym), *, &)
+      log_file_output_stream.log(severity(severity_sym), *, &)
     end
 
     def self.extended(base)
@@ -26,7 +26,7 @@ module Crystalball
     end
 
     def output_stream
-      @output_stream ||= ::Logger.new(STDOUT).tap do |logger|
+      @output_stream ||= ::Logger.new($stdout).tap do |logger|
         logger.level = severity(configured_level)
       end
     end

@@ -18,7 +18,7 @@ module Crystalball
 
       class << self
         def factory_bot_constant
-          defined?(::FactoryBot) ? ::FactoryBot : ::FactoryGirl
+          ::FactoryBot
         end
 
         # List of factories used by current example

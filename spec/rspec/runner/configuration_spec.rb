@@ -21,7 +21,7 @@ describe Crystalball::RSpec::Runner::Configuration do
           'runner_class' => Crystalball::RSpec::Runner,
           'runner_class_name' => 'Crystalball::RSpec::Runner',
           'log_level' => :info,
-          'log_file' => Pathname('/dev/null')
+          'log_file' => Pathname(File::NULL)
         )
     end
   end
@@ -64,7 +64,7 @@ describe Crystalball::RSpec::Runner::Configuration do
           'diff_to' => 'HEAD',
           'map_expiration_period' => 1,
           'log_level' => :info,
-          'log_file' => Pathname('/dev/null'),
+          'log_file' => Pathname(File::NULL),
           'custom' => 42
         )
     end
@@ -75,7 +75,7 @@ describe Crystalball::RSpec::Runner::Configuration do
 
     context 'with ENV overrides' do
       around do |example|
-        value = ENV['CRYSTALBALL_DIFF_FROM']
+        value = ENV.fetch('CRYSTALBALL_DIFF_FROM', nil)
         begin
           ENV['CRYSTALBALL_DIFF_FROM'] = 'origin/master'
           example.call

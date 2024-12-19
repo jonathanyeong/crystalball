@@ -43,10 +43,10 @@ module Crystalball
       #   end
       # end
       #
-      def predictor(&block)
+      def predictor(&)
         raise NotImplementedError, 'Configure `prediction_builder_class_name` in `crystalball.yml` and override `predictor` method' unless block_given?
 
-        @predictor ||= Crystalball::Predictor.new(execution_map, repo, from: config['diff_from'], to: config['diff_to'], &block)
+        @predictor ||= Crystalball::Predictor.new(execution_map, repo, from: config['diff_from'], to: config['diff_to'], &)
       end
     end
   end

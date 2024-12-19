@@ -37,8 +37,8 @@ module Crystalball
         git_diff.patch.match(/rename from.*\nrename to (.*)/)[1]
       end
 
-      def method_missing(method, *args, &block)
-        git_diff.public_send(method, *args, &block) || super
+      def method_missing(method, *, &)
+        git_diff.public_send(method, *, &) || super
       end
 
       def respond_to_missing?(method, *)

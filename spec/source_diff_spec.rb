@@ -15,8 +15,7 @@ describe Crystalball::SourceDiff do
 
   describe '#each' do
     it 'yields all changed files' do
-      paths = []
-      subject.each { |file_diff| paths << file_diff.relative_path }
+      paths = subject.map(&:relative_path)
       expect(paths).to contain_exactly('file1.rb', 'file2.rb')
     end
 
@@ -24,8 +23,7 @@ describe Crystalball::SourceDiff do
       let(:diff_file2) { instance_double('Git::Diff::DiffFile', path: 'file2.rb', type: 'modified', patch: '') }
 
       it 'yields all changed files' do
-        paths = []
-        subject.each { |file_diff| paths << file_diff.relative_path }
+        paths = subject.map(&:relative_path)
         expect(paths).to contain_exactly('file1.rb')
       end
     end

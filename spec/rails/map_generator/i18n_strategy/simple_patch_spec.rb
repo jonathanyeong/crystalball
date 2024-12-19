@@ -36,7 +36,7 @@ describe Crystalball::Rails::MapGenerator::I18nStrategy::SimplePatch do
       )
     end
 
-    let!(:patched_class) { ::I18n::Backend::Simple }
+    let!(:patched_class) { I18n::Backend::Simple }
 
     %i[load_file store_translations lookup].each do |method|
       it "changes and restores #{method} method" do

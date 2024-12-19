@@ -23,6 +23,6 @@ RSpec.configure do |config|
   end
 
   config.before(:suite) do
-    ENV['CRYSTALBALL_LOG_FILE'] = '/dev/null'
+    ENV['CRYSTALBALL_LOG_FILE'] = File::NULL
   end
 end

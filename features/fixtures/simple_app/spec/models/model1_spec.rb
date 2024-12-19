@@ -20,10 +20,4 @@ describe Model1 do
 
     it { is_expected.to have_attributes(name: 'John Doe', field: 'value') }
   end
-
-  context 'using factory by alias and with syntax included' do
-    subject { build_stubbed(:model_1) }
-
-    it { is_expected.to have_attributes(name: 'John Doe', field: 'value') }
-  end
 end

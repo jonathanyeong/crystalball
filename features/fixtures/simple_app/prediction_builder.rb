@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Sample prediction builder
-class PredictionBuilder < ::Crystalball::RSpec::PredictionBuilder
+class PredictionBuilder < Crystalball::RSpec::PredictionBuilder
   private
 
   def predictor

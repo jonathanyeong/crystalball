@@ -6,14 +6,14 @@ RSpec.describe 'Logger' do
   let(:output_stream) { StringIO.new }
   let(:log_file_output_stream) { StringIO.new }
   let(:log_file) { 'tmp/crystalball.log' }
-  let!(:stdout_logger) { ::Logger.new(output_stream) }
-  let!(:file_logger) { ::Logger.new(log_file_output_stream) }
+  let!(:stdout_logger) { Logger.new(output_stream) }
+  let!(:file_logger) { Logger.new(log_file_output_stream) }
   let(:configured_level) { 'warn' }
 
   around do |example|
     Crystalball.reset_logger
 
-    old_log_file = ENV['CRYSTALBALL_LOG_FILE']
+    old_log_file = ENV.fetch('CRYSTALBALL_LOG_FILE', nil)
     ENV['CRYSTALBALL_LOG_LEVEL'] = configured_level
     ENV['CRYSTALBALL_LOG_FILE'] = log_file
 
@@ -25,8 +25,8 @@ RSpec.describe 'Logger' do
   end
 
   before do
-    allow(::Logger).to receive(:new).with(STDOUT).and_return(stdout_logger)
-    allow(::Logger).to receive(:new).with(Pathname(log_file)).and_return(file_logger)
+    allow(Logger).to receive(:new).with($stdout).and_return(stdout_logger)
+    allow(Logger).to receive(:new).with(Pathname(log_file)).and_return(file_logger)
   end
 
   it 'logs everything to file' do

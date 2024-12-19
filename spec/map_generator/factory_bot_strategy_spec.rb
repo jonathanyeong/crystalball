@@ -8,21 +8,6 @@ describe Crystalball::MapGenerator::FactoryBotStrategy do
 
   include_examples 'base strategy'
 
-  describe '.factory_bot_constant' do
-    subject { described_class.factory_bot_constant }
-
-    it { is_expected.to eq ::FactoryBot }
-
-    context 'when FactoryGirl is defined instead of FactoryBot' do
-      before do
-        ::FactoryGirl = ::FactoryBot
-        Object.send(:remove_const, :FactoryBot)
-      end
-
-      it { is_expected.to eq ::FactoryGirl }
-    end
-  end
-
   describe '.factory_definitions' do
     subject { described_class.factory_definitions }
 

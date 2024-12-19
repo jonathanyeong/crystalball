@@ -8,11 +8,8 @@ module Crystalball
       # Configuration of tables map generator. Is can be accessed as a first argument inside
       # `Crystalball::Rails::TablesMapGenerator.start! { |config| config } block.
       class Configuration
-        attr_writer :map_storage
-        attr_accessor :commit
-        attr_accessor :version
-        attr_writer :root_path
-        attr_writer :object_sources_detector
+        attr_writer :map_storage, :root_path, :object_sources_detector
+        attr_accessor :commit, :version
 
         def map_storage_path
           @map_storage_path ||= Pathname('tables_map.yml')

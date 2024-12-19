@@ -25,7 +25,7 @@ module Crystalball
 
         # Overrides `FactoryBot::Syntax::Default::DSL#factory` and `FactoryBot::Syntax::Default::ModifyDSL#factory`.
         # Pushes path of a factory to `FactoryBotStrategy.factory_definitions` and calls original `factory`
-        def factory(*args, &block)
+        def factory(*args, &)
           factory_path = FactoryPathFetcher.fetch
           name = args.first.to_s
 

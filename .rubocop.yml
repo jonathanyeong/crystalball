@@ -1,6 +1,8 @@
 AllCops:
   DisplayCopNames: true
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 3.3
+  NewCops: enable
+  SuggestExtensions: false
 Style/StringLiterals:
   Enabled: false
 Metrics/LineLength:
@@ -14,11 +16,19 @@ Layout/SpaceBeforeBlockBraces:
   EnforcedStyleForEmptyBraces: space
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
   Enabled: false
-Style/MethodMissingSuper:
+Lint/MissingSuper:
   Enabled: false
 Lint/AmbiguousBlockAssociation:
   Enabled: false
 Style/DoubleNegation:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Lint/EmptyBlock:
+  Enabled: false
+Lint/EmptyClass:
   Enabled: false

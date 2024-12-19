@@ -23,7 +23,7 @@ module Crystalball
             # Reverts original behavior of `ActionView::Template#compile!`
             def revert!
               ::ActionView::Template.class_eval do
-                alias_method :compile!, :cb_original_compile! # rubocop:disable Lint/DuplicateMethods
+                alias_method :compile!, :cb_original_compile!
                 undef_method :cb_patched_compile!
               end
             end
@@ -31,9 +31,9 @@ module Crystalball
 
           # Will replace original `ActionView::Template#compile!`. Pushes path of a view to
           # `ActionViewStrategy.views` and calls original `compile!`
-          def cb_patched_compile!(*args)
+          def cb_patched_compile!(*)
             ActionViewStrategy.views.push identifier
-            cb_original_compile!(*args)
+            cb_original_compile!(*)
           end
         end
       end

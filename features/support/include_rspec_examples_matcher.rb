@@ -41,7 +41,7 @@ RSpec::Matchers.define :include_rspec_examples do |*expected|
 
   def split_example_id(example_id)
     if example_id.include?('[')
-      /(.*)\[(.*)\]/.match(example_id)[1..-1]
+      /(.*)\[(.*)\]/.match(example_id)[1..]
     else
       [example_id, '']
     end

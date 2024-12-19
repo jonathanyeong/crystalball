@@ -6,14 +6,15 @@ module Crystalball
     extend Forwardable
 
     attr_reader :configuration
+
     delegate %i[map_storage strategies dump_threshold map_class] => :configuration
 
     class << self
       # Registers Crystalball handlers to generate execution map during specs execution
       #
       # @param [Proc] block to configure MapGenerator and Register strategies
-      def start!(&block)
-        generator = new(&block)
+      def start!(&)
+        generator = new(&)
 
         ::RSpec.configure do |c|
           c.before(:suite) { generator.start! }

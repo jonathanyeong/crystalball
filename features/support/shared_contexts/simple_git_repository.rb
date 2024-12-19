@@ -71,6 +71,6 @@ shared_context 'simple git repository' do
 
   def replace(filepath, regexp, *args, &block)
     content = File.read(filepath).gsub(regexp, *args, &block)
-    File.open(filepath, 'wb') { |file| file.write(content) }
+    File.binwrite(filepath, content)
   end
 end
