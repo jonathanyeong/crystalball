@@ -31,9 +31,9 @@ module Crystalball
 
           # Will replace original `ActionView::Template#compile!`. Pushes path of a view to
           # `ActionViewStrategy.views` and calls original `compile!`
-          def cb_patched_compile!(*)
+          def cb_patched_compile!(*args)
             ActionViewStrategy.views.push identifier
-            cb_original_compile!(*)
+            cb_original_compile!(*args)
           end
         end
       end

@@ -27,7 +27,7 @@ describe Crystalball::MapGenerator::FactoryBotStrategy::DSLPatch do
         stub_const(
           dsl_klass,
           Class.new do
-            def factory(*); end
+            def factory(*args); end
           end
         )
       end
@@ -37,7 +37,7 @@ describe Crystalball::MapGenerator::FactoryBotStrategy::DSLPatch do
         stub_const(
           second_dsl_klass,
           Class.new do
-            def factory(*); end
+            def factory(*args); end
           end
         )
       end

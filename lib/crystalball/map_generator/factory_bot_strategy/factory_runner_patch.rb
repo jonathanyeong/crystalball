@@ -14,7 +14,7 @@ module Crystalball
 
         # Overrides `FactoryBot::FactoryRunner#run`. Pushes factory name to
         # `FactoryBotStrategy.used_factories` and calls original `run`
-        def run(*)
+        def run(*args)
           factory = FactoryBotStrategy.factory_bot_constant.factory_by_name(@name)
           FactoryBotStrategy.used_factories << factory.name.to_s
           super

@@ -21,11 +21,11 @@ module Crystalball
     end
 
     def method_missing(*args, &block)
-      records.respond_to?(*) ? records.public_send(*args, &block) : super
+      records.respond_to?(*args) ? records.public_send(*args, &block) : super
     end
 
-    def respond_to_missing?(*)
-      records.respond_to?(*)
+    def respond_to_missing?(*args)
+      records.respond_to?(*args)
     end
 
     private

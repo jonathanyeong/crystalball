@@ -8,7 +8,7 @@ module Crystalball
     module Strategy
       include Helpers::PathFormatter
 
-      def call(*)
+      def call(*args)
         format_paths(yield)
       end
     end

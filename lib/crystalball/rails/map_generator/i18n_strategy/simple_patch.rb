@@ -36,22 +36,22 @@ module Crystalball
 
           # Will replace original `I18n::Backend::Simple#load_file`.
           # Stores filename in current thread
-          def cb_patched_load_file(filename, *)
+          def cb_patched_load_file(filename, *args)
             Thread.current[:cb_locale_file_name] = filename
-            cb_original_load_file(filename, *)
+            cb_original_load_file(filename, *args)
           end
 
           # Will replace original `I18n::Backend::Simple#store_translations`.
           # Adds filename for each value
-          def cb_patched_store_translations(locale, data, *)
+          def cb_patched_store_translations(locale, data, *args)
             cb_add_filename_to_values(data, Thread.current[:cb_locale_file_name])
-            cb_original_store_translations(locale, data, *)
+            cb_original_store_translations(locale, data, *args)
           end
 
           # Will replace original `I18n::Backend::Simple#lookup`.
           # Records origin filename of each value used.
-          def cb_patched_lookup(*)
-            value = cb_original_lookup(*)
+          def cb_patched_lookup(*args)
+            value = cb_original_lookup(*args)
             cb_remove_and_track_filename_from_values(value)
           end
 

@@ -24,7 +24,7 @@ describe Crystalball::MapGenerator::FactoryBotStrategy::FactoryRunnerPatch do
       stub_const(
         '::FactoryBotConstant::FactoryRunner',
         Class.new do
-          def run(*); end
+          def run(*args); end
         end
       )
     end
