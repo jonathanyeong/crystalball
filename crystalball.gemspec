@@ -32,7 +32,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'git'
 
-  spec.required_ruby_version = '> 2.3.0'
+  spec.required_ruby_version = '> 3.3.0'
 
   spec.add_development_dependency 'actionview'
   spec.add_development_dependency 'activerecord'
