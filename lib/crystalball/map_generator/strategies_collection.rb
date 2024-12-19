@@ -18,8 +18,8 @@ module Crystalball
         example_group_map
       end
 
-      def method_missing(method_name, *, &block)
-        _strategies.public_send(method_name, *, &block) || super
+      def method_missing(method_name, *args, &block)
+        _strategies.public_send(method_name, *args, &block) || super
       end
 
       def respond_to_missing?(method_name, *_args)
