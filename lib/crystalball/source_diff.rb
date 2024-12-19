@@ -20,8 +20,8 @@ module Crystalball
 
     # Iterates over each changed file of diff
     #
-    def each(&)
-      changeset.each(&)
+    def each(&block)
+      changeset.each(&block)
     end
 
     def empty?

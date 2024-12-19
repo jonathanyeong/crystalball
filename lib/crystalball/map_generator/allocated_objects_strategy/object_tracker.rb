@@ -15,9 +15,9 @@ module Crystalball
 
         # @yield a block to execute
         # @return [Array<Object>] classes of objects allocated during the block execution
-        def used_classes_during(&)
+        def used_classes_during(&block)
           self.created_object_classes = Set.new
-          trace_point.enable(&)
+          trace_point.enable(&block)
           created_object_classes
         end
 

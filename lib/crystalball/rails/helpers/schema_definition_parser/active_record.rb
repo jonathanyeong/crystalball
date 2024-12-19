@@ -8,9 +8,9 @@ module Crystalball
         module ActiveRecord
           # A simple mock to read definition of schema
           class Schema
-            def self.define(*_args, &)
+            def self.define(*_args, &block)
               collector = SchemaDefinitionParser.new
-              collector.instance_exec(collector, &)
+              collector.instance_exec(collector, &block)
               collector.hash
             end
           end

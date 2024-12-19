@@ -20,8 +20,8 @@ module Crystalball
       records
     end
 
-    def method_missing(*, &)
-      records.respond_to?(*) ? records.public_send(*, &) : super
+    def method_missing(*, &block)
+      records.respond_to?(*) ? records.public_send(*, &block) : super
     end
 
     def respond_to_missing?(*)

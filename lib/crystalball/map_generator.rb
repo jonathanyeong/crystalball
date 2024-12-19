@@ -13,8 +13,8 @@ module Crystalball
       # Registers Crystalball handlers to generate execution map during specs execution
       #
       # @param [Proc] block to configure MapGenerator and Register strategies
-      def start!(&)
-        generator = new(&)
+      def start!(&block)
+        generator = new(&block)
 
         ::RSpec.configure do |c|
           c.before(:suite) { generator.start! }

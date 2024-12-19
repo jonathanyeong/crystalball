@@ -22,8 +22,8 @@ module Crystalball
 
         private
 
-        def create_table(table_name, *options, &)
-          add_to_hash(table_name, options: ['create_table'] + options, content: TableContentParser.parse(&))
+        def create_table(table_name, *options, &block)
+          add_to_hash(table_name, options: ['create_table'] + options, content: TableContentParser.parse(&block))
         end
 
         def add_foreign_key(table1, table2, *options)
